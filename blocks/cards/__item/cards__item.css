@@ -1,0 +1,16 @@
+.cards__item {
+    width: 282px;
+    height: 361px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: max-content max-content;
+    gap: 25px;
+}
+
+@media all and (max-width: 940px) {
+    .cards {
+        justify-self: end;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Путешествие по России</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a href="#" class="header__title"></a>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/Kusto.png" alt="Кусто" class="profile__img">
+        <div class="profile__info">
+          <h1 class="profile__info-title">Жак-Ив Кусто</h1>
+          <button class="profile__info-button"></button>
+          <h2 class="profile__info-subtitle">Исследователь океана</h2>
+        </div>
+        <button class="profile__button"></button>
+      </section>
+      <section class="places">
+        <div class="cards">
+          <div class="cards__item">
+            <img src="./images/Karachaevsk.png" alt="Храм" class="cards__image">
+            <h3 class="cards__title">Карачаевск</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+          <div class="cards__item">
+            <img src="./images/Elbrus.png" alt="Закат на Эльбрусе" class="cards__image">
+            <h3 class="cards__title">Гора Эльбрус</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+          <div class="cards__item">
+            <img src="./images/Dombay.png" alt="Гора Домбай" class="cards__image">
+            <h3 class="cards__title">Домбай</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+          <div class="cards__item">
+            <img src="./images/Elbrus.png" alt="Закат на Эльбрусе" class="cards__image">
+            <h3 class="cards__title">Гора Эльбрус</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+          <div class="cards__item">
+            <img src="./images/Dombay.png" alt="Гора Домбай" class="cards__image">
+            <h3 class="cards__title">Домбай</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+          <div class="cards__item">
+            <img src="./images/Karachaevsk.png" alt="Храм" class="cards__image">
+            <h3 class="cards__title">Карачаево-Черкесская Республика</h3>
+            <a href="#" class="cards__link"></a>
+          </div>
+        </div>    
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__author"> &copy; 2021 Mesto Russia</p>
+    </footer>
+  </div>
+  <section class="popup popup_opened">
+    <div class="popup__container" id="container">
+      <button class="popup__close" id="close"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form action="#" class="form">
+        <input type="text" name="Name" class="form__item" placeholder="Ваше имя">
+        <input type="text" name="Profession" class="form__item" placeholder="Профессия">      
+        <button type="submit" class="form__button">Сохранить</button>
+      </form>
+    </div>
+</section>
+</body>
+</html>

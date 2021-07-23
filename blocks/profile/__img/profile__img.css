@@ -1,0 +1,9 @@
+.profile__img {
+    border-radius: 50%;
+    height: 120px;
+}
+@media all and (max-width: 680px) {
+    .profile__img {
+        justify-self: center;
+    }
+}

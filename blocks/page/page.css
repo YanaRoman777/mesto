@@ -1,0 +1,14 @@
+.page {
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background: #000;
+  color: #FFF;
+}
+
+@media all and (max-width: 940px) {
+  .page {
+    padding: 0 19px;
+  }
+}
