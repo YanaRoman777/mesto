@@ -60,16 +60,17 @@
       <p class="footer__author"> &copy; 2021 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup popup_opened">
-    <div class="popup__container" id="container">
-      <button class="popup__close" id="close"></button>
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form action="#" class="form">
-        <input type="text" name="Name" class="form__item" placeholder="Ваше имя">
-        <input type="text" name="Profession" class="form__item" placeholder="Профессия">      
+        <input type="text" name="Name" class="form__item popup__input-name" placeholder="Ваше имя">
+        <input type="text" name="Job" class="form__item popup__input-job" placeholder="Профессия">      
         <button type="submit" class="form__button">Сохранить</button>
       </form>
     </div>
 </section>
+<script src="./Js/script.js"></script>
 </body>
 </html>
