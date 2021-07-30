@@ -1,9 +1,5 @@
 .cards__link {
-    display: inline-block;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 22px;
-    color: #FFFFFF;
+    display: block;
     width: 22px;
     height: 19px;
     background: center no-repeat;
