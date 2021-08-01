@@ -8,6 +8,10 @@
     font-style: normal;
     font-weight: 500;
     align-self: end;
+    max-width: 294px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -16,5 +20,6 @@
         font-size: 27px;
         line-height: 33px;
         text-align: center;
+        max-width: 189px;
     }
 }

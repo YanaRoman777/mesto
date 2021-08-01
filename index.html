@@ -9,68 +9,68 @@
 <body>
   <div class="page">
     <header class="header">
-      <a href="#" class="header__title"></a>
+      <a href="#" class="header__logo"></a>
     </header>
     <main class="content">
       <section class="profile">
-        <img src="./images/Kusto.png" alt="Кусто" class="profile__img">
+        <img src="./images/Kusto.png" alt="Aватар" class="profile__img">
         <div class="profile__info">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
-          <button class="profile__info-button"></button>
-          <h2 class="profile__info-subtitle">Исследователь океана</h2>
+          <button type="button" class="profile__info-button"></button>
+          <p class="profile__info-subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__button"></button>
+        <button type="button" class="profile__button"></button>
       </section>
       <section class="places">
-        <div class="cards">
+        <article class="cards">
           <div class="cards__item">
             <img src="./images/Karachaevsk.png" alt="Храм" class="cards__image">
             <h3 class="cards__title">Карачаевск</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
           <div class="cards__item">
             <img src="./images/Elbrus.png" alt="Закат на Эльбрусе" class="cards__image">
             <h3 class="cards__title">Гора Эльбрус</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
           <div class="cards__item">
             <img src="./images/Dombay.png" alt="Гора Домбай" class="cards__image">
             <h3 class="cards__title">Домбай</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
           <div class="cards__item">
             <img src="./images/Elbrus.png" alt="Закат на Эльбрусе" class="cards__image">
             <h3 class="cards__title">Гора Эльбрус</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
           <div class="cards__item">
             <img src="./images/Dombay.png" alt="Гора Домбай" class="cards__image">
             <h3 class="cards__title">Домбай</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
           <div class="cards__item">
             <img src="./images/Karachaevsk.png" alt="Храм" class="cards__image">
             <h3 class="cards__title">Карачаево-Черкесская Республика</h3>
-            <button class="cards__link"></button>
+            <button type="button" class="cards__link"></button>
           </div>
-        </div>    
+        </article>    
       </section>
     </main>
     <footer class="footer">
       <p class="footer__author"> &copy; 2021 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <button class="popup__close"></button>
+      <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="#" class="form">
-        <input type="text" name="Name" class="form__item popup__input-name" placeholder="Ваше имя">
-        <input type="text" name="Job" class="form__item popup__input-job" placeholder="Профессия">      
+      <form action="#" class="form" name="Profile">
+        <input id="input-name" type="text" name="Name" class="form__item" placeholder="Ваше имя">
+        <input id="input-job" type="text" name="Job" class="form__item" placeholder="Профессия">      
         <button type="submit" class="form__button">Сохранить</button>
       </form>
     </div>
-</section>
-<script src="./Js/script.js"></script>
+</div>
+<script src="./js/script.js"></script>
 </body>
 </html>
