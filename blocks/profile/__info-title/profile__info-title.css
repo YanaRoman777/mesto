@@ -15,7 +15,7 @@
 }
 
 
-@media all and (max-width: 680px) {
+@media all and (max-width: 720px) {
     .profile__info-title {
         font-size: 27px;
         line-height: 33px;

@@ -6,6 +6,8 @@ let closeButton = document.querySelector('.popup__close');
 let formElement = document.querySelector('.form');
 let nameInput = document.querySelector('#input-name');
 let jobInput = document.querySelector('#input-job');
+profileTitle.textContent = nameInput.value;
+profileSubtitle.textContent = jobInput.value;
 
 let popupOpen = () => {
   popup.classList.add('popup_opened');
@@ -19,12 +21,8 @@ let formSubmitHandler = evt => {
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
     popupClose();
-    
-}
-let editProfile = () => {
-    popupOpen();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 closeButton.addEventListener('click', popupClose);
-profileInfoButton.addEventListener('click', editProfile);
+profileInfoButton.addEventListener('click', popupOpen);

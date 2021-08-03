@@ -15,12 +15,13 @@
     cursor: pointer;
 }
 
-@media all and (max-width: 680px) {
+@media all and (max-width: 720px) {
     .profile__button {
         font-size: 27px;
         line-height: 33px;
         text-align: center;
         justify-self: center;
         width: 282px;
+        background-size: 16px;
     }
 }

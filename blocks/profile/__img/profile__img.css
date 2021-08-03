@@ -2,7 +2,7 @@
     border-radius: 50%;
     height: 120px;
 }
-@media all and (max-width: 680px) {
+@media all and (max-width: 720px) {
     .profile__img {
         justify-self: center;
     }

@@ -8,7 +8,7 @@
     justify-self: start;
 }
 
-@media all and (max-width: 680px) {
+@media all and (max-width: 720px) {
     .profile__info{
         justify-self: center;
         column-gap: 10px;
