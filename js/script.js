@@ -6,11 +6,12 @@ let closeButton = document.querySelector('.popup__close');
 let formElement = document.querySelector('.form');
 let nameInput = document.querySelector('#input-name');
 let jobInput = document.querySelector('#input-job');
-profileTitle.textContent = nameInput.value;
-profileSubtitle.textContent = jobInput.value;
+
 
 let popupOpen = () => {
   popup.classList.add('popup_opened');
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
 }
 let popupClose = () => {
   popup.classList.remove('popup_opened');
