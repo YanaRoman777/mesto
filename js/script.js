@@ -10,8 +10,8 @@ let jobInput = document.querySelector('#input-job');
 
 let popupOpen = () => {
   popup.classList.add('popup_opened');
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
 }
 let popupClose = () => {
   popup.classList.remove('popup_opened');
