@@ -1,0 +1,12 @@
+.popup-images__title {
+    font-family: 'Inter';
+    margin-block-start: 10px;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+}

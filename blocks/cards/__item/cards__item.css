@@ -1,4 +1,5 @@
 .cards__item {
+    position: relative;
     width: 282px;
     background: #FFFFFF;
     border-radius: 10px;
@@ -6,6 +7,7 @@
     grid-template-columns: 5fr 1fr;
     grid-template-rows: max-content max-content;
     gap: 25px;
+    overflow: hidden;
 }
 
 @media all and (max-width: 940px) {

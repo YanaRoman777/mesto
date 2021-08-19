@@ -8,3 +8,8 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 6;
 }
+
+
+.popup:last-of-type {
+    background: rgba(0, 0, 0, 0.9);
+}

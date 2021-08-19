@@ -1,0 +1,20 @@
+.popup__new-places {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color:#FFFFFF;
+    padding: 34px 36px 37px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 430px;
+    z-index: 10;
+    align-self: center;
+    justify-self: center;
+}
+
+@media all and (max-width: 640px) {
+    .new-places {
+        width: 283px;
+        padding: 25px 22px;
+    }
+}
