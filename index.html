@@ -37,7 +37,7 @@
       <p class="footer__author"> &copy; 2021 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup popup-profile">
     <div class="popup__container">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
@@ -52,9 +52,9 @@
     <div class="popup__new-places">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form action="#" class="form" name="Profile">
-        <input type="text" name="title" class="form__item" placeholder="Название">
-        <input type="text" name="link" class="form__item" placeholder="Ссылка на картинку">      
+      <form id="form-add" action="#" class="form" name="Profile">
+        <input type="text" name="title" id="popup-places__type_name" class="form__item" placeholder="Название">
+        <input type="url" name="link" id="popup-places__type_link" class="form__item" placeholder="Ссылка на картинку">      
         <button type="submit" class="form__button">Создать</button>
       </form>
     </div>
