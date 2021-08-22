@@ -14,14 +14,36 @@ const closePlacesButton = popupPlaces.querySelector('.popup__close');
 const popupNewPlaces = popupPlaces.querySelector('.popup__new-places');
 const popupProfile = document.querySelector('.popup-profile');
 
-// Открытие и закрытие попапов
+// Открытие попапов
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnEsc);
+  popup.addEventListener('click', closePopupOnOverlay);
 };
 
+// Закрытие попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnEsc);
+  popup.removeEventListener('click', closePopupOnOverlay);
 }
+
+// закрытие попап кликом на оверлей
+function closePopupOnOverlay(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+  
+// закрытие попап нажатием на esc
+function closePopupOnEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
 
 // Открытие модального окна профайла 
 function openPopupProfile() {
