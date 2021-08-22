@@ -1,13 +1,13 @@
 const profileInfoButton = document.querySelector('.profile__info-button');
 const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__info-title');
-let profileSubtitle = document.querySelector('.profile__info-subtitle');
+const profileSubtitle = document.querySelector('.profile__info-subtitle');
 const popup = document.querySelector('.popup');
 const popupContainer = popup.querySelector('.popup__container');
 const closeButton = popup.querySelector('.popup__close');
 const formElement = document.querySelector('.form');
-let nameInput = document.querySelector('#input-name');
-let jobInput = document.querySelector('#input-job');
+const nameInput = document.querySelector('#input-name');
+const jobInput = document.querySelector('#input-job');
 const cards = document.querySelector('.cards');
 const popupPlaces = document.querySelector('.popup-places');
 const closePlacesButton = popupPlaces.querySelector('.popup__close');
@@ -30,24 +30,12 @@ function openPopupProfile() {
   jobInput.value = profileSubtitle.textContent;
 }
 
-function closePopupProfile() {
-  closePopup(popupProfile);
-}
-
 profileInfoButton.addEventListener('click', openPopupProfile);
-closeButton.addEventListener('click', closePopupProfile);
+closeButton.addEventListener('click', () => closePopup(popupProfile));
 
 // Открытие и закрытие попапа с добавлением карточки
-function openPopupPlace() {
-  openPopup(popupPlaces);
-};
-
-function closePopupPlace() {
-  closePopup(popupPlaces);
-};
-
-profileButton.addEventListener('click', openPopupPlace);
-closePlacesButton.addEventListener('click', closePopupPlace);
+profileButton.addEventListener('click', () => openPopup(popupPlaces));
+closePlacesButton.addEventListener('click', () => closePopup(popupPlaces));
 
 
 // функция добавления/удаления лайка
@@ -119,7 +107,6 @@ function renderPlace(elm) {
 initialCards.forEach(renderPlace);
 
 // добавляем новую карточку на страницу через форму
-
 const cardsForm = popupNewPlaces.querySelector('.form');
 const titleInput = cardsForm.querySelector('[name=title]');
 const linkInput = cardsForm.querySelector('[name=link]');
@@ -131,10 +118,7 @@ function submitAddCardForm(evt) {
     name: titleInput.value,
     link: linkInput.value
   }
-  if (titleInput.value && linkInput.value) {
-    renderPlace(newPost);
-    
-  }
+  renderPlace(newPost);
   closePopup(popupPlaces);
   document.querySelector('#form-add').reset();
 }
@@ -143,8 +127,8 @@ cardsForm.addEventListener('submit', submitAddCardForm);
 // открытие / закрытие картинки
   const popupImages = document.querySelector('.popup-images');
   const imagesButtonClose = popupImages.querySelector('.popup__close');
-  let popupImagesTitle = popupImages.querySelector('.popup-images__title');
-  let popupImagesImg = popupImages.querySelector('.popup-images__img');
+  const popupImagesTitle = popupImages.querySelector('.popup-images__title');
+  const popupImagesImg = popupImages.querySelector('.popup-images__img');
 
   function openPopupImages(evt){
     openPopup(popupImages);
