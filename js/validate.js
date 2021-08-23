@@ -1,4 +1,3 @@
-// ВАЛИДАЦИЯ
 // Вынесем все необходимые элементы формы в константы
 const form = document.querySelector('.form');
 const formInput = form.querySelector('.form__input');
@@ -82,6 +81,7 @@ const hasInvalidInput = (inputList) => {
 
 // Функция переключателя кнопки принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
+
 const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {

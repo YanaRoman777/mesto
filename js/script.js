@@ -13,16 +13,28 @@ const popupPlaces = document.querySelector('.popup-places');
 const closePlacesButton = popupPlaces.querySelector('.popup__close');
 const popupNewPlaces = popupPlaces.querySelector('.popup__new-places');
 const popupProfile = document.querySelector('.popup-profile');
+const formAdd = document.querySelector('#form-add');
 
-// Открытие попапов
+
+// Открытие попап 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupOnEsc);
   popup.addEventListener('click', closePopupOnOverlay);
 };
 
+// Открытие попап карточки
+function openPopupPlaces () {
+  const buttonElement = formAdd.querySelector('.form__submit');
+  openPopup (popupPlaces)
+  resetFormAdd(formAdd);
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add('form__submit_inactive');
+};
+
 // Закрытие попапов
 function closePopup(popup) {
+
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupOnEsc);
   popup.removeEventListener('click', closePopupOnOverlay);
@@ -44,7 +56,6 @@ function closePopupOnEsc(evt) {
   }
 }
 
-
 // Открытие модального окна профайла 
 function openPopupProfile() {
   openPopup(popupProfile);
@@ -55,8 +66,13 @@ function openPopupProfile() {
 profileInfoButton.addEventListener('click', openPopupProfile);
 closeButton.addEventListener('click', () => closePopup(popupProfile));
 
+// функция очистки формы карточки
+function resetFormAdd(evt) {
+  evt.reset();
+}
+
 // Открытие и закрытие попапа с добавлением карточки
-profileButton.addEventListener('click', () => openPopup(popupPlaces));
+profileButton.addEventListener('click', () => openPopupPlaces());
 closePlacesButton.addEventListener('click', () => closePopup(popupPlaces));
 
 
@@ -66,47 +82,15 @@ function likeActive (evt) {
 }
 
 // редактирование профиля
-const formSubmitHandler = evt => {
+const submitEditProfileForm = evt => {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', submitEditProfileForm);
 
 // создание карточки 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Снег в горах'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'Озеро в горах'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Многоэтажки'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Тундра'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Железная дорога'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Зимний байкал'
-  }
-];
 const initialTemplate = document.querySelector('.template-cards');
 function createCard(elm) {
   const card= initialTemplate.content.firstElementChild.cloneNode(true);
@@ -142,7 +126,7 @@ function submitAddCardForm(evt) {
   }
   renderPlace(newPost);
   closePopup(popupPlaces);
-  document.querySelector('#form-add').reset();
+  resetFormAdd(formAdd);
 }
 cardsForm.addEventListener('submit', submitAddCardForm);
 

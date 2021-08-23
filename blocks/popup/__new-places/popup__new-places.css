@@ -13,7 +13,7 @@
 }
 
 @media all and (max-width: 640px) {
-    .new-places {
+    .popup__new-places {
         width: 283px;
         padding: 25px 22px;
     }
