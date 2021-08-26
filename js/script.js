@@ -14,6 +14,7 @@ const closePlacesButton = popupPlaces.querySelector('.popup__close');
 const popupNewPlaces = popupPlaces.querySelector('.popup__new-places');
 const popupProfile = document.querySelector('.popup-profile');
 const formAdd = document.querySelector('#form-add');
+const buttonElement = formAdd.querySelector('.form__submit');
 
 
 // Открытие попап 
@@ -25,11 +26,9 @@ function openPopup (popup) {
 
 // Открытие попап карточки
 function openPopupPlaces () {
-  const buttonElement = formAdd.querySelector('.form__submit');
   openPopup (popupPlaces)
-  resetFormAdd(formAdd);
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add('form__submit_inactive');
+  resetFormAdd(formAdd) 
+  disableSubmitButton ()
 };
 
 // Закрытие попапов
@@ -67,8 +66,8 @@ profileInfoButton.addEventListener('click', openPopupProfile);
 closeButton.addEventListener('click', () => closePopup(popupProfile));
 
 // функция очистки формы карточки
-function resetFormAdd(evt) {
-  evt.reset();
+function resetFormAdd(formAdd) {
+  formAdd.reset();
 }
 
 // Открытие и закрытие попапа с добавлением карточки

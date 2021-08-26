@@ -1,7 +1,13 @@
 // Вынесем все необходимые элементы формы в константы
-const form = document.querySelector('.form');
-const formInput = form.querySelector('.form__input');
-const formError = form.querySelector(`.${formInput.id}-error`);
+const configValid ={
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+}
+
 
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -64,7 +70,7 @@ const enableValidation = () => {
 };
 
 // Вызовем функцию
-enableValidation();
+enableValidation(configValid);
 
 // Функция проверки валидности нескольких полей, принимает массив полей
 
@@ -86,11 +92,20 @@ const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add('form__submit_inactive');
+    disableSubmitButton ()
   } else {
     // иначе сделай кнопку активной
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove('form__submit_inactive');
+    removedisableSubmitButton ()
   }
-}; 
+};
+
+// Функция сделай кнопку неактивной
+function disableSubmitButton () {
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add('form__submit_inactive');
+}
+ // Функция сделай кнопку активной
+function removedisableSubmitButton () {
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove('form__submit_inactive');
+}
