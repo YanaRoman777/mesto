@@ -8,7 +8,6 @@ const configValid ={
   errorClass: 'form__input-error_active'
 }
 
-
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage) => {
   // Находим элемент ошибки внутри самой функции
@@ -53,14 +52,14 @@ const setEventListeners = (formElement) => {
 }; 
 
 // Добавление обработчиков всем формам
-const enableValidation = () => {
+const enableValidation = (obj) => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
-  const formList = Array.from(document.querySelectorAll('.form'));
+  const formList = Array.from(document.querySelectorAll(obj.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       // У каждой формы отменим стандартное поведение
-      evt.preventDefault();
+      evt.preventDefault(formElement, obj);
     });
 
     // Для каждой формы вызовем функцию setEventListeners,
