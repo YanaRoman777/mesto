@@ -28,7 +28,7 @@ function openPopup (popup) {
 function openPopupPlaces () {
   openPopup (popupPlaces)
   resetFormAdd(formAdd) 
-  disableSubmitButton ()
+  disableSubmitButton (configValid)
 };
 
 // Закрытие попапов
