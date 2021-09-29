@@ -1,12 +1,4 @@
-// Вынесем все необходимые элементы формы 
-const configValid ={
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inactiveButtonClass: 'form__submit_inactive',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
-}
+import { configValid } from "./constant.js";
 
 class FormValidator {
     constructor(config, formElement) {
@@ -39,7 +31,7 @@ class FormValidator {
       };
     // Функция переключателя кнопки принимает массив полей ввода
     // и элемент кнопки, состояние которой нужно менять
-    _toggleButtonState(inputList) {
+    toggleButtonState(inputList) {
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
         if (this._hasInvalidInput(inputList)) {
@@ -62,11 +54,11 @@ class FormValidator {
     //обработчики
     _setEventListeners = () => {
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this._toggleButtonState(inputList);
+        this.toggleButtonState(inputList);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState(inputList);
+                this.toggleButtonState(inputList);
       });
     });
       };

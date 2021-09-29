@@ -1,6 +1,7 @@
 import { Card } from './Card.js';
 import { FormValidator, configValid } from './FormValidator.js';
 
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -32,18 +33,22 @@ const profileInfoButton = document.querySelector('.profile__info-button');
 const profileButton = document.querySelector('.profile__button');
 const profileTitle = document.querySelector('.profile__info-title');
 const profileSubtitle = document.querySelector('.profile__info-subtitle');
-const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__close');
-const formElement = document.querySelector('.form');
+const popupProfile = document.querySelector('#popup-profile');
+const closeButtonProfile = popupProfile.querySelector('.popup__close');
+const formElementProfile = document.querySelector('.form_profile');
 const nameInput = document.querySelector('#input-name');
 const jobInput = document.querySelector('#input-job');
 const popupPlaces = document.querySelector('.popup-places');
 const closePlacesButton = popupPlaces.querySelector('.popup__close');
-const popupContainer = popup.querySelector('.popup__container');
-const popupProfile = document.querySelector('.popup-profile');
 const formAdd = document.querySelector('#form-add');
 const popupNewPlaces = popupPlaces.querySelector('.popup__new-places');
 
+
+const editProfileFormValidate = new FormValidator(configValid, popupProfile);
+const addPostFormValidate = new FormValidator(configValid, popupNewPlaces);
+
+editProfileFormValidate.enableValidation();
+addPostFormValidate.enableValidation();
 // Открытие попап 
 function openPopup (popup) {
     popup.classList.add('popup_opened');
@@ -54,7 +59,8 @@ function openPopup (popup) {
 // Открытие попап карточки
 function openPopupPlaces () {
     openPopup (popupPlaces)
-    resetFormAdd(formAdd)
+    formAdd.reset(); 
+    addPostFormValidate.enableValidation();
   };
 
 // Закрытие попапов
@@ -68,7 +74,7 @@ function closePopup(popup) {
 function closePopupOnOverlay(evt) {
     if (evt.target.classList.contains('popup_opened')) {
         const popupOpened = document.querySelector('.popup_opened');
-        closePopup(popupOpened);
+        closePopup(evt.target); 
 }
 }
 
@@ -88,12 +94,7 @@ function openPopupProfile() {
   }
   
   profileInfoButton.addEventListener('click', openPopupProfile);
-  closeButton.addEventListener('click', () => closePopup(popupProfile));
-  
-  // функция очистки формы карточки
-function resetFormAdd(formAdd) {
-    formAdd.reset();
-  }
+  closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
   
   // Открытие и закрытие попапа с добавлением карточки
 profileButton.addEventListener('click', () => openPopupPlaces());
@@ -105,18 +106,26 @@ const submitEditProfileForm = evt => {
     profileSubtitle.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-formElement.addEventListener('submit', submitEditProfileForm);
+formElementProfile.addEventListener('submit', submitEditProfileForm);
 
-// добавление карточки на страницу
+// создаем карточку
+
+function createCard(elm) {
+  
+  const popupNewPlaces = new Card(elm, '.template-cards');
+  const placeElement = popupNewPlaces.generateCard();
+  return placeElement;
+} 
+
+  // добавление карточки на страницу 
 function renderPlace(elm) {
     const cards = document.querySelector('.cards');
-    const popupNewPlaces = new Card(elm, '.template-cards');
-  
-    const placeElement = popupNewPlaces.generateCard();
-    cards.prepend(placeElement);
+    cards.prepend(createCard(elm)); 
   }
   
   initialCards.forEach(renderPlace);
+
+
 
 // добавляем новую карточку на страницу через форму
 const cardsForm = popupNewPlaces.querySelector('.form');
@@ -132,7 +141,7 @@ function submitAddCardForm(evt) {
   }
   renderPlace(newPost);
   closePopup(popupPlaces);
-  resetFormAdd(formAdd);
+  formAdd.reset(); 
 }
 cardsForm.addEventListener('submit', submitAddCardForm);
 
@@ -151,11 +160,5 @@ function openPopupImages(link, name){
 imagesButtonClose.addEventListener('click', function(){
   closePopup(popupImages);
 });
-
-const editProfileFormValidate = new FormValidator(configValid, popupProfile);
-const addPostFormValidate = new FormValidator(configValid, popupNewPlaces);
-
-editProfileFormValidate.enableValidation();
-addPostFormValidate.enableValidation();
 
 export { openPopupImages }

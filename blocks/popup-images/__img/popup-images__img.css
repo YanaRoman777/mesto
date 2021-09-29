@@ -1,3 +1,5 @@
 .popup-images__img {
     overflow: hidden;
+    max-width: 75vw;
+    max-height: 75vh; 
 }

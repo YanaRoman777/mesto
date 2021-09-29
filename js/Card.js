@@ -30,9 +30,9 @@ class Card{
     generateCard = () => {
         this._element = this._getTemplate();
         this._setEventListeners();
-    
-        this._element.querySelector('.cards__image').src = this._link;
-        this._element.querySelector('.cards__image').alt = this._name;
+        const cardsImage = this._element.querySelector('.cards__image');
+        cardsImage.src = this._link;
+        cardsImage.alt = this._name;
         this._element.querySelector('.cards__title').textContent = this._name;
     
         return this._element;
