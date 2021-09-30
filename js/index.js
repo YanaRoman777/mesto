@@ -1,5 +1,6 @@
 import { Card } from './Card.js';
-import { FormValidator, configValid } from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
+import { configValid } from "./constant.js";
 
 
 const initialCards = [
@@ -55,12 +56,20 @@ function openPopup (popup) {
     document.addEventListener('keydown', closePopupOnEsc);
     popup.addEventListener('click', closePopupOnOverlay);
   };
-
+// Функция сделай кнопку неактивной
+function disableSubmitButton (obj) {
+  const buttonElement = document.querySelector('#form-add-button');
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add(obj.inactiveButtonClass);
+}
 // Открытие попап карточки
 function openPopupPlaces () {
     openPopup (popupPlaces)
-    formAdd.reset(); 
-    addPostFormValidate.enableValidation();
+    formAdd.reset();
+    disableSubmitButton(configValid)
+    
+    //addPostFormValidate.toggleButtonState(); 
+    //Если сделать так, консоль выдает ошибку: "FormValidator.js:26 Uncaught TypeError: Cannot read properties of undefined (reading 'some')"
   };
 
 // Закрытие попапов
@@ -73,7 +82,6 @@ function closePopup(popup) {
 // закрытие попап кликом на оверлей
 function closePopupOnOverlay(evt) {
     if (evt.target.classList.contains('popup_opened')) {
-        const popupOpened = document.querySelector('.popup_opened');
         closePopup(evt.target); 
 }
 }
@@ -141,7 +149,6 @@ function submitAddCardForm(evt) {
   }
   renderPlace(newPost);
   closePopup(popupPlaces);
-  formAdd.reset(); 
 }
 cardsForm.addEventListener('submit', submitAddCardForm);
 

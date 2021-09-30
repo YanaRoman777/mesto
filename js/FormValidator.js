@@ -1,6 +1,4 @@
-import { configValid } from "./constant.js";
-
-class FormValidator {
+export class FormValidator {
     constructor(config, formElement) {
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
@@ -29,9 +27,10 @@ class FormValidator {
           return !inputElement.validity.valid;
         });
       };
+      
     // Функция переключателя кнопки принимает массив полей ввода
     // и элемент кнопки, состояние которой нужно менять
-    toggleButtonState(inputList) {
+    _toggleButtonState(inputList) {
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
         if (this._hasInvalidInput(inputList)) {
@@ -54,11 +53,11 @@ class FormValidator {
     //обработчики
     _setEventListeners = () => {
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this.toggleButtonState(inputList);
+        this._toggleButtonState(inputList);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this.toggleButtonState(inputList);
+                this._toggleButtonState(inputList);
       });
     });
       };
@@ -71,4 +70,3 @@ class FormValidator {
     }
 }
 
-export { FormValidator, configValid }
