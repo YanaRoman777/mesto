@@ -56,20 +56,13 @@ function openPopup (popup) {
     document.addEventListener('keydown', closePopupOnEsc);
     popup.addEventListener('click', closePopupOnOverlay);
   };
-// Функция сделай кнопку неактивной
-function disableSubmitButton (obj) {
-  const buttonElement = document.querySelector('#form-add-button');
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add(obj.inactiveButtonClass);
-}
 // Открытие попап карточки
 function openPopupPlaces () {
     openPopup (popupPlaces)
     formAdd.reset();
-    disableSubmitButton(configValid)
+    //Cпасибо за подсказки! я бы сама не разобралась.
     
-    //addPostFormValidate.toggleButtonState(); 
-    //Если сделать так, консоль выдает ошибку: "FormValidator.js:26 Uncaught TypeError: Cannot read properties of undefined (reading 'some')"
+    addPostFormValidate.toggleButtonState(); 
   };
 
 // Закрытие попапов

@@ -6,6 +6,8 @@ export class FormValidator {
         this._inputErrorClass = config.inputErrorClass;
         this._errorClass = config.errorClass;
         this._formElement = formElement;
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
       }
     // Функция, которая добавляет класс с ошибкой
     _showInputError(inputElement) {
@@ -27,18 +29,15 @@ export class FormValidator {
           return !inputElement.validity.valid;
         });
       };
-      
     // Функция переключателя кнопки принимает массив полей ввода
     // и элемент кнопки, состояние которой нужно менять
-    _toggleButtonState(inputList) {
-        const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-
-        if (this._hasInvalidInput(inputList)) {
-        buttonElement.classList.add(this._inactiveButtonClass);
-        buttonElement.disabled = true;
+    toggleButtonState() {
+        if (this._hasInvalidInput(this._inputList)) {
+          this._buttonElement.classList.add(this._inactiveButtonClass);
+          this._buttonElement.disabled = true;
         } else {
-        buttonElement.classList.remove(this._inactiveButtonClass);
-        buttonElement.disabled = false;
+          this._buttonElement.classList.remove(this._inactiveButtonClass);
+          this._buttonElement.disabled = false;
         }
     };
     
@@ -53,11 +52,11 @@ export class FormValidator {
     //обработчики
     _setEventListeners = () => {
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this._toggleButtonState(inputList);
+        this.toggleButtonState(inputList);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState(inputList);
+                this.toggleButtonState(inputList);
       });
     });
       };
@@ -69,4 +68,3 @@ export class FormValidator {
         this._setEventListeners();
     }
 }
-
