@@ -1,5 +1,7 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+
+import { Section } from './Section.js';
 import { configValid } from "./constant.js";
 
 
@@ -43,8 +45,7 @@ const popupPlaces = document.querySelector('.popup-places');
 const closePlacesButton = popupPlaces.querySelector('.popup__close');
 const formAdd = document.querySelector('#form-add');
 const popupNewPlaces = popupPlaces.querySelector('.popup__new-places');
-
-
+const cards = document.querySelector('.cards'); 
 const editProfileFormValidate = new FormValidator(configValid, popupProfile);
 const addPostFormValidate = new FormValidator(configValid, popupNewPlaces);
 
@@ -126,6 +127,19 @@ function renderPlace(elm) {
   
   initialCards.forEach(renderPlace);
 
+
+// вызов генерации карточек
+//const cardList = new Section({
+//  items: initialCards,
+//  renderer: (item) => {
+    // cоздаём карточку
+ //   const postElement = newCard(item);
+    // добавляем карточку в DOM
+ //   cardList.addItem(postElement);
+ // }
+//}, cards);
+// вызов отрисовки всех карточек на странице 
+//cardList.rendererItem();
 
 
 // добавляем новую карточку на страницу через форму
