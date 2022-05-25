@@ -1,5 +1,5 @@
 // класс, который отвечает за отрисовку элементов на странице
-export class Section {
+export default class Section {
 
     constructor({items, renderer}, classSelector) {
         this._items = items;
@@ -8,7 +8,7 @@ export class Section {
     }
 
 // метод, который отвечает за отрисовку всех элементов
-rendererItem() {
+rendererItems() {
     this._items.forEach(item => {
         this._renderer(item);
     });

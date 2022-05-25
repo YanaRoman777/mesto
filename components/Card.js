@@ -1,33 +1,34 @@
-import { openPopupImages } from './index.js'
+//import { openPopupImages } from '../pages/index.js'
 
 class Card{
-    constructor(data, cardSelector){
+    constructor({data, handleCardClick}, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
-    _getTemplate = () => {
+    _getTemplate() {
         const cardTemplate = document.querySelector('.template-cards').content.firstElementChild.cloneNode(true);
         return cardTemplate;
     }
-    _activeLike = () => {
+    _activeLike() {
         this._element.querySelector('.cards__link').classList.toggle('cards__link-active');
     }
-    _removeCard = () => {
+    _removeCard() {
         this._element.querySelector('.cards__close').closest('.cards__item').remove();
     }
     // Добавление обработчиков
-    _setEventListeners = () => {
+    _setEventListeners() {
         this._element.querySelector('.cards__link').addEventListener('click', () => {
             this._activeLike();
           });
         this._element.querySelector('.cards__close').addEventListener('click', () => {
             this._removeCard();
           });
-          this._element.querySelector('.cards__image').addEventListener('click', () => { openPopupImages(this._link, this._name) });
+          this._element.querySelector('.cards__image').addEventListener('click', this._handleCardClick.bind(this));
     }
-    generateCard = () => {
+    generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
         const cardsImage = this._element.querySelector('.cards__image');
