@@ -47,9 +47,9 @@ function openPopupPlaces () {
 }
 
 // обработчик клика по карточке
+const imagePopup = new PopupWithImage('.popup-images');
 function handleCardClick(data) {
-  const popup = new PopupWithImage('.popup-images');
-  popup.open(data);
+  imagePopup.open(data);
 }
 
 // создаем карточку 
