@@ -1,4 +1,4 @@
-import './styles/index.css'; 
+// import './styles/index.css'; 
 import { Card } from './components/Card.js';
 import FormValidator from './components/FormValidator.js';
 import PopupWithImage from './components/PopupWithImage.js';
@@ -18,21 +18,32 @@ const editProfileFormValidate = new FormValidator(configValid, popupProfile);
 const addPostFormValidate = new FormValidator(configValid, popupNewPlaces);
 const userInfo = new UserInfo( userNameSelector, userAboutSelector );
 
-profileInfoButton.addEventListener('click', openPopupProfile);
-
-function openPopupProfile() {
-  const popupEditProfile = new PopupWithForm({
+const popupEditProfile = new PopupWithForm({
     handleSubmitForm: (item) => {
       userInfo.setUserInfo(item);
-      //console.log(userInfo.setUserInfo(item));
       popupEditProfile.close();
     }
   }, '.popup-profile');
-  //debugger;
-  //console.log(userInfo.setUserInfo(item));
-  popupEditProfile.setInputValues(userInfo.getUserInfo());
-  editProfileFormValidate.enableValidation();
+
+popupEditProfile.setInputValues(userInfo.getUserInfo());
+profileInfoButton.addEventListener('click', openPopupProfile);
+function openPopupProfile() {
   popupEditProfile.open();
+}
+
+// открытие попапа добавление карточки
+const popup = new PopupWithForm({
+  handleSubmitForm: (item) => {
+    const postCard = createCard(item);
+    cardList.addItem(postCard);
+    popup.close();
+  }
+}, '.popup-places');
+
+profileButton.addEventListener('click',  openPopupPlaces);
+
+function openPopupPlaces () {
+  popup.open();
 }
 
 // обработчик клика по карточке
@@ -41,43 +52,27 @@ function handleCardClick(data) {
   popup.open(data);
 }
 
+// создаем карточку 
+function createCard(item) { 
+  const cardElm = new Card({
+    data: item,
+    handleCardClick: () => handleCardClick(item)
+  }, '.cards__item');
+  const placeElement = cardElm.generateCard(); 
+  return placeElement; 
+}  
+
 // вызов генерации карточек
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    // Создадим экземпляр карточки
-    const cardElm = new Card({
-      data: item,
-      handleCardClick: () => handleCardClick(item)
-    }, '.cards__item');
-    // Создаём карточку и возвращаем наружу
-    const cardElement = cardElm.generateCard();
-    // добавляем карточку в DOM
-    cardList.addItem(cardElement);
+    const postCard = createCard(item);
+    cardList.addItem(postCard);
   }
 }, '.cards');
 // вызов отрисовки всех карточек на странице 
 cardList.rendererItems();
 
-// открытие попапа добавление карточки
-profileButton.addEventListener('click',  openPopupPlaces);
-
-function openPopupPlaces () {
-  const popup = new PopupWithForm({
-    handleSubmitForm: (item) => {
-    // Создадим экземпляр карточки
-    const cardElm = new Card({
-      data: item,
-      handleCardClick: () => handleCardClick(item)
-    },  '.cards__item');
-    // Создаём карточку и возвращаем наружу
-    const cardElement = cardElm.generateCard();
-    // добавляем карточку в DOM
-    cardList.addItem(cardElement);
-    popup.close();
-    }
-  }, '.popup-places');
- 
-  addPostFormValidate.enableValidation();
-  popup.open();
-}
+// валидация
+editProfileFormValidate.enableValidation();
+addPostFormValidate.enableValidation();
