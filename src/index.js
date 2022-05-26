@@ -1,78 +1,9 @@
 import './styles/index.css'; 
-import { Card } from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import Section  from './components/Section.js';
-import UserInfo from './components/UserInfo.js';
-import { configValid,
-  initialCards,
-  profileInfoButton,
-  profileButton,
-  popupProfile,
-  popupNewPlaces,
-  userNameSelector,
-  userAboutSelector} from "./utils/constant.js";
 
-const editProfileFormValidate = new FormValidator(configValid, popupProfile);
-const addPostFormValidate = new FormValidator(configValid, popupNewPlaces);
-const userInfo = new UserInfo( userNameSelector, userAboutSelector );
+console.log('Hello, World!');
+const numbers = [2, 3, 5];
 
-const popupEditProfile = new PopupWithForm({
-    handleSubmitForm: (item) => {
-      userInfo.setUserInfo(item);
-      popupEditProfile.close();
-    }
-  }, '.popup-profile');
+// Стрелочная функция. Не запнётся ли на ней Internet Explorer?
+const doubledNumbers = numbers.map(number => number * 2);
 
-popupEditProfile.setInputValues(userInfo.getUserInfo());
-profileInfoButton.addEventListener('click', openPopupProfile);
-function openPopupProfile() {
-  popupEditProfile.open();
-}
-
-// открытие попапа добавление карточки
-const popup = new PopupWithForm({
-  handleSubmitForm: (item) => {
-    const postCard = createCard(item);
-    cardList.addItem(postCard);
-    popup.close();
-  }
-}, '.popup-places');
-
-profileButton.addEventListener('click',  openPopupPlaces);
-
-function openPopupPlaces () {
-  popup.open();
-}
-
-// обработчик клика по карточке
-function handleCardClick(data) {
-  const popup = new PopupWithImage('.popup-images');
-  popup.open(data);
-}
-
-// создаем карточку 
-function createCard(item) { 
-  const cardElm = new Card({
-    data: item,
-    handleCardClick: () => handleCardClick(item)
-  }, '.cards__item');
-  const placeElement = cardElm.generateCard(); 
-  return placeElement; 
-}  
-
-// вызов генерации карточек
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const postCard = createCard(item);
-    cardList.addItem(postCard);
-  }
-}, '.cards');
-// вызов отрисовки всех карточек на странице 
-cardList.rendererItems();
-
-// валидация
-editProfileFormValidate.enableValidation();
-addPostFormValidate.enableValidation();
+console.log(doubledNumbers); // 4, 6, 10 

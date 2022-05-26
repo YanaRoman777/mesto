@@ -8,8 +8,7 @@ export default class UserInfo {
     this._userInfo = {};
     this._userInfo.user= this._userNameElement.textContent;
     this._userInfo.about = this._userAboutMeElement.textContent;
-    console.log(this._userInfo);
-
+    
     return this._userInfo;
   }
 // добавить данные пользователя на стр
