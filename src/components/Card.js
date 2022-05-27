@@ -9,7 +9,7 @@ class Card{
         // console.log(this._buttonLikeElement);
         this._closeButton = this._element.querySelector('.cards__close');
         this._cardImage = this._element.querySelector('.cards__image');
-        this._cardTitle = this._element.querySelector('.cards__title');
+        this._cardName = this._element.querySelector('.cards__title');
     }
 
     _getTemplate() {
@@ -36,7 +36,7 @@ class Card{
         this._setEventListeners();
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
-        this._cardTitle.textContent = this._name;
+        this._cardName.textContent = this._name;
     
         return this._element;
     }

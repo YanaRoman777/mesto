@@ -24,27 +24,31 @@ const editProfilePopup = new PopupWithForm({
       editProfilePopup.close();
     }
   }, '.popup-profile');
+editProfileFormValidate.enableValidation(); //валидация
 
 profileInfoButton.addEventListener('click', openPopupProfile);
 function openPopupProfile() {
   editProfilePopup.open();
   editProfilePopup.setInputValues(userInfo.getUserInfo());
-  editProfileFormValidate.enableValidation();
+  editProfileFormValidate.toggleButtonState();
 }
 
 // открытие попапа добавление карточки
 const addCardPopup = new PopupWithForm({
   handleSubmitForm: (item) => {
     const postCard = createCard(item);
+    // console.log(postCard);
     cardList.addItem(postCard);
     addCardPopup.close();
   }
 }, '.popup-places');
+addPostFormValidate.enableValidation(); //валидация
+
 profileButton.addEventListener('click',  openPopupPlaces);
 
 function openPopupPlaces () {
   addCardPopup.open();
-  addPostFormValidate.enableValidation();
+  addPostFormValidate.toggleButtonState();
 }
 
 // обработчик клика по карточке
@@ -73,5 +77,3 @@ const cardList = new Section({
 }, '.cards');
 // вызов отрисовки всех карточек на странице 
 cardList.rendererItems();
-
-// валидация
