@@ -25,10 +25,11 @@ const editProfilePopup = new PopupWithForm({
     }
   }, '.popup-profile');
 
-editProfilePopup.setInputValues(userInfo.getUserInfo());
 profileInfoButton.addEventListener('click', openPopupProfile);
 function openPopupProfile() {
   editProfilePopup.open();
+  editProfilePopup.setInputValues(userInfo.getUserInfo());
+  editProfileFormValidate.enableValidation();
 }
 
 // открытие попапа добавление карточки
@@ -39,11 +40,11 @@ const addCardPopup = new PopupWithForm({
     addCardPopup.close();
   }
 }, '.popup-places');
-
 profileButton.addEventListener('click',  openPopupPlaces);
 
 function openPopupPlaces () {
   addCardPopup.open();
+  addPostFormValidate.enableValidation();
 }
 
 // обработчик клика по карточке
@@ -57,7 +58,7 @@ function createCard(item) {
   const cardElm = new Card({
     data: item,
     handleCardClick: () => handleCardClick(item)
-  }, '.cards__item');
+  }, '.template-cards');
   const placeElement = cardElm.generateCard(); 
   return placeElement; 
 }  
@@ -74,5 +75,3 @@ const cardList = new Section({
 cardList.rendererItems();
 
 // валидация
-editProfileFormValidate.enableValidation();
-addPostFormValidate.enableValidation();

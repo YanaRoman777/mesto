@@ -1,41 +1,42 @@
-//import { openPopupImages } from '../pages/index.js'
-
 class Card{
     constructor({data, handleCardClick}, cardSelector) {
-        //console.log(data, "ghbdtn"); 
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._element = this._getTemplate();
+        this._likeButton = this._element.querySelector('.cards__link');
+        // console.log(this._buttonLikeElement);
+        this._closeButton = this._element.querySelector('.cards__close');
+        this._cardImage = this._element.querySelector('.cards__image');
+        this._cardTitle = this._element.querySelector('.cards__title');
     }
 
     _getTemplate() {
-        const cardTemplate = document.querySelector('.template-cards').content.firstElementChild.cloneNode(true);
+        const cardTemplate = document.querySelector(this._cardSelector).content.firstElementChild.cloneNode(true);
         return cardTemplate;
     }
-    _activeLike() {
-        this._element.querySelector('.cards__link').classList.toggle('cards__link-active');
+    _handleLikeIcon() {
+        this._likeButton.classList.toggle('cards__link-active');
     }
     _removeCard() {
-        this._element.querySelector('.cards__close').closest('.cards__item').remove();
+        this._element.remove();
     }
     // Добавление обработчиков
     _setEventListeners() {
-        this._element.querySelector('.cards__link').addEventListener('click', () => {
-            this._activeLike();
+        this._likeButton.addEventListener('click', () => {
+            this._handleLikeIcon();
           });
-        this._element.querySelector('.cards__close').addEventListener('click', () => {
+        this._closeButton.addEventListener('click', () => {
             this._removeCard();
           });
-          this._element.querySelector('.cards__image').addEventListener('click', this._handleCardClick.bind(this));
+          this._cardImage.addEventListener('click', this._handleCardClick.bind(this));
     }
     generateCard() {
-        this._element = this._getTemplate();
         this._setEventListeners();
-        const cardsImage = this._element.querySelector('.cards__image');
-        cardsImage.src = this._link;
-        cardsImage.alt = this._name;
-        this._element.querySelector('.cards__title').textContent = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
+        this._cardTitle.textContent = this._name;
     
         return this._element;
     }

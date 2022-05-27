@@ -51,12 +51,12 @@ export default class FormValidator {
       }
     //обработчики
     _setEventListeners = () => {
-        const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this.toggleButtonState(inputList);
-        inputList.forEach((inputElement) => {
+        //const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+        this.toggleButtonState();
+        this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this.toggleButtonState(inputList);
+                this.toggleButtonState();
       });
     });
       };
