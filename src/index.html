@@ -13,8 +13,8 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img src="<%=require('./images/Kusto.png')%>" alt="Aватар" class="profile__img">
-        <!-- <img src="./images/Kusto.png" alt="Aватар" class="profile__img"> -->
+        <!-- <img src="<%=require('./images/Kusto.png')%>" alt="Aватар" class="profile__img"> -->
+        <img src="./images/Kusto.png" alt="Aватар" class="profile__img">
         <div class="profile__info">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__info-button"></button>
@@ -61,7 +61,7 @@
       <h3 class="popup__title">Новое место</h3>
       <form id="form-add" action="#" class="form form_new-places" name="Profile" novalidate>
         <label class="form__field">
-          <input id="input-title" type="text" name="title" class="form__input" placeholder="Название" minlength="2" maxlength="30" required>
+          <input id="input-title" type="text" name="name" class="form__input" placeholder="Название" minlength="2" maxlength="30" required>
           <span class="input-title-error form__input-error">Вы пропустили это поле.</span>
         </label>
         <label class="form__field">

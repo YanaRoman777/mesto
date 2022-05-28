@@ -77,3 +77,4 @@ const cardList = new Section({
 }, '.cards');
 // вызов отрисовки всех карточек на странице 
 cardList.rendererItems();
+
