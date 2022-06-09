@@ -1,13 +1,12 @@
-.cards__link {
+.cards__like {
     border: none;
     width: 22px;
     height: 19px;
     background: center no-repeat;
     background-image: url("../../../images/heart.svg");
-    align-self: center;
 }
 
-.cards__link:hover {
+.cards__like:hover {
     cursor: pointer;
     opacity: 0.5;
 }

@@ -1,0 +1,20 @@
+.profile__avatar {
+    position: relative;
+}
+.profile__avatar::after {
+    content: '';
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    background: url(../../../images/Vector.svg) center no-repeat #000;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .6s;
+    top: 0px;
+    left: 0px;
+}
+
+.profile__avatar:hover::after {
+    opacity: .8;
+    cursor: pointer;
+}

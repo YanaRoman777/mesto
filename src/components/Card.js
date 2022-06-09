@@ -5,7 +5,7 @@ class Card{
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._element = this._getTemplate();
-        this._likeButton = this._element.querySelector('.cards__link');
+        this._likeButton = this._element.querySelector('.cards__like');
         // console.log(this._buttonLikeElement);
         this._closeButton = this._element.querySelector('.cards__close');
         this._cardImage = this._element.querySelector('.cards__image');
