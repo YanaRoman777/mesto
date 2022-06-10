@@ -6,11 +6,6 @@ export default class UserInfo {
   }
 // собрать данные пользлвателя
   getUserInfo() {
-    // this._userInfo = {};
-    // this._userInfo.user= this._userNameElement.textContent;
-    // this._userInfo.about = this._userAboutMeElement.textContent;
-    
-    // return this._userInfo;
     return{
       name: this._userNameElement.textContent,
       about: this._userAboutMeElement.textContent
