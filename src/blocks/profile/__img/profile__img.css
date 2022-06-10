@@ -4,8 +4,3 @@
     width: 120px;
     object-fit: cover;
 }
-@media all and (max-width: 720px) {
-    .profile__img {
-        justify-self: center;
-    }
-}

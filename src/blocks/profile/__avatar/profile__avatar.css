@@ -18,3 +18,10 @@
     opacity: .8;
     cursor: pointer;
 }
+
+
+@media all and (max-width: 720px) {
+    .profile__avatar {
+        justify-self: center;
+    }
+}
